@@ -19,15 +19,15 @@ main{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content:end; */
-}
+    
+}        
+
 
 form {
     font-size: 40px;
     margin-left: 7px;
     max-width: 400px;
-    height: 900px;
-    
+    height: 900px;    
 }
 
 input{
@@ -45,14 +45,14 @@ button {
 
 .currentDate {
     margin: 10px;
-    height: 250px;px;
+    height: 250px;
     border: 2px solid black;
     width: 65%;
  
 }
 
 .fiveDayForecast {
-    height: 250px;px;
+    height: 250px;
     border: 2px solid black;
     width: 100%;
     min-width: 300px;
