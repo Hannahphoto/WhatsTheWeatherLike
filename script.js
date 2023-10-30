@@ -1,28 +1,25 @@
 var cityInfo = document.getElementById('cityInfo');
 var searchButton = document.getElementById('searchButton');
 var input = document.getElementById('input');
-
+var city = input.value;
 
 
 const cityValues ="";
+
 JSON.parse(localStorage.getItem("input", input));
 
+
+// then re-render the list
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 function renderCity () {
-    cityValues.forEach((city) => {
         var li = document.createElement('li');
-        li.textContent = city;
+        li.textContent = cityValues[i];
         ul.appendChild(li);
-       console.log(li);
-        if(input === city){
-            
-        }
-    });
 };
 
 
-// the events capture user inputs, you can then build the array of things in local storage, then re-render the list
+// the events capture user inputs, you can then build the array of things in local storage, 
 
 function saveCities() {
     let city=input.value;
@@ -78,3 +75,4 @@ function currentWeatherApi (event){
 searchButton.addEventListener("click",currentWeatherApi);
 input.addEventListener("input", saveCities);
 
+// the parameter to the function will just be based on event handler, for example, nothing will stop you from sending the attribute of a button that has a city name, or the city name from a input field
