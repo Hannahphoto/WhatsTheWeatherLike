@@ -5,7 +5,6 @@ var input = document.getElementById('input');
 
 
 const cityValues ="";
-
 JSON.parse(localStorage.getItem("input", input));
 
 // WHEN I click on a city in the search history
@@ -26,7 +25,8 @@ function renderCity () {
 // the events capture user inputs, you can then build the array of things in local storage, then re-render the list
 
 function saveCities() {
-    JSON.stringify(localStorage.setItem("input",input));
+    let city=input.value;
+    JSON.stringify(localStorage.setItem("input",city));
     cityValues.push(input);
     renderCity();
 
