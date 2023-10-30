@@ -1,12 +1,12 @@
 var cityInfo = document.getElementById('cityInfo');
 var searchButton = document.getElementById('searchButton');
 var input = document.getElementById('input');
-var city = input.value;
 
 
-const cityValues ="";
 
-JSON.parse(localStorage.getItem("input", input));
+const cityValues =[];
+
+// JSON.parse(localStorage.getItem("input", input));
 
 
 // then re-render the list
@@ -23,9 +23,12 @@ function renderCity () {
 
 function saveCities() {
     let city=input.value;
+    console.log(city);
     JSON.stringify(localStorage.setItem("input",city));
     cityValues.push(input);
+    searchCityGeo(city);
     renderCity();
+
 
 };
 
@@ -54,22 +57,23 @@ function currentWeatherApi (event){
 
         
       });
-};
+    };
+
 // WHEN I view future weather conditions for that city
 // THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 
 
-// function geoApi (event){
-//     event.preventDefault();
-//     var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit=5&appid=7f598c561224054683226ca8211216e9";
-//     fetch(requestUrl)
-//         .then(function(response){
-//             return response.json();
-//         })
-//         .then(function(data){
-//             console.log(data);
-//         })
-// };
+function searchCityGeo (city){
+    event.preventDefault();
+    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=7f598c561224054683226ca8211216e9";
+    fetch(requestUrl)
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(data){
+            console.log(data);
+        })
+};
 
 
 searchButton.addEventListener("click",currentWeatherApi);

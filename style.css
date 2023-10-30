@@ -45,6 +45,7 @@ button {
 
 li {
     list-style: none;
+    list-style-type: ;
 }
 
 .currentDate {
@@ -52,6 +53,8 @@ li {
     height: 250px;
     border: 2px solid black;
     width: 65%;
+    font-size: 20px;
+    
  
 }
 
