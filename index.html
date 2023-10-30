@@ -15,26 +15,28 @@
 </header>
 
 <body>
-    <main>
+    <section>
+        <!-- // GIVEN a weather dashboard with form inputs
+// WHEN I search for a city -->
         <form>
             <label for="city">Search for City: </label><br>
-            <input type="text" id="city" name="city"><br>
-            <button id="searchButton">Search</button>
-            <ul>
-                <li>
+            <input type="text" id="input" name="cityName"><br>
+            <button id="searchButton">Search</button>     
+        </form>  
+        <ul>
+            <li>
 
-                </li>
-            </ul>
-        </form>
-        <div class="currentDate">
-            <div class="fiveDayForecast">
-
-            </div>
+            </li>
+        </ul>
+        <div class="currentDate" id="cityInfo">
+        
         </div>
-        
-        
-    </main>
+    </section>
+    
+    <!-- <div class="fiveDayForecast">
 
+    </div> -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="./script.js"></script>
 </body>
 
