@@ -1,6 +1,9 @@
 var cityInfo = document.getElementById('cityInfo');
+// var cityName = document.getElementById('cityName')
 var searchButton = document.getElementById('searchButton');
 var input = document.getElementById('input');
+// var city = document.getElementById('city');
+// var fiveDayInfo = getElementById('fiveDayInfo');
 
 
 
@@ -13,9 +16,12 @@ const cityValues =[];
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 function renderCity () {
-        var li = document.createElement('li');
-        li.textContent = cityValues[i];
-        ul.appendChild(li);
+    var city =localStorage.getItem("input", input);
+    // var li = document.createElement('li');
+    var buttonEl = document.createElement("button");
+    buttonEl.textContent = city;
+    ul.appendChild(buttonEl);
+      buttonEl.addEventListener("click", searchCityGeo)
 };
 
 
@@ -28,16 +34,15 @@ function saveCities() {
     cityValues.push(input);
     searchCityGeo(city);
     renderCity();
-
-
+    // cityInfo.innerHTML= "";
 };
 
 // <!-- // GIVEN a weather dashboard with form inputs
 // WHEN I search for a city -->
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
-function currentWeatherApi (event){
-    event.preventDefault();
-    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=39.95&lon=75.17&appid=7f598c561224054683226ca8211216e9&units=imperial";
+function currentWeatherApi (lat,lon){
+  cityInfo.innerHTML = "";
+    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=7f598c561224054683226ca8211216e9&units=imperial";
     fetch(requestUrl) 
       .then(function(response){
         return response.json();
@@ -46,7 +51,6 @@ function currentWeatherApi (event){
 // THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
       .then(function (data){
         console.log(data);
-        cityInfo.innerHTML ="";
         var temerature = data.main.temp;
         var description = data.weather[0].description;
         var humidity = data.main.humidity;
@@ -54,8 +58,6 @@ function currentWeatherApi (event){
         var listItem = document.createElement("li");
         listItem.textContent = "Temperature: "+ temerature + " Description: "+ description + " Humidity: "+ humidity + " Wind Speed: "+ wind + "m/s";
         cityInfo.appendChild(listItem);
-
-        
       });
     };
 
@@ -65,18 +67,27 @@ function currentWeatherApi (event){
 
 function searchCityGeo (city){
     event.preventDefault();
-    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=5&appid=7f598c561224054683226ca8211216e9";
+    cityInfo.innerHTML="";
+    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid=7f598c561224054683226ca8211216e9";
     fetch(requestUrl)
         .then(function(response){
             return response.json();
         })
         .then(function(data){
             console.log(data);
-        })
+            var cityName = data[0].name;
+            var cityState = data[0].state;
+            var lat = data[0].lat;
+            var lon = data[0].lon;
+            var listCity = document.createElement("li");
+            listCity.textContent = cityName +", "+ cityState;
+            cityInfo.appendChild(listCity);
+            currentWeatherApi(lat,lon);
+        }); 
 };
 
 
-searchButton.addEventListener("click",currentWeatherApi);
+searchButton.addEventListener("click",searchCityGeo);
 input.addEventListener("input", saveCities);
 
 // the parameter to the function will just be based on event handler, for example, nothing will stop you from sending the attribute of a button that has a city name, or the city name from a input field
