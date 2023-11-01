@@ -47,22 +47,26 @@ li {
     list-style: none; 
 }
 
+.cityList {
+    margin: 10px;
+    height: 900px;
+    border: 2px solid black;
+    width: 350px;
+}
 
 .currentDate {
-    margin: 10px;
+    margin: 15px;
     height: 250px;
     border: 2px solid black;
-    width: 65%;
-    font-size: 20px;
-    
- 
+    width: 1000px;
+    font-size: 30px;
 }
 
 .fiveDayForecast {
     height: 250px;
     border: 2px solid black;
-    width: 100%;
-    min-width: 300px;
-    position: relative;
-    margin-top: 265px;
+    width: 1000px;
+    margin-top: 15px;
+    font-size: 20px;
+    margin-left: 15px;
 }

@@ -4,6 +4,7 @@ var searchButton = document.getElementById('searchButton');
 var input = document.getElementById('input');
 // var city = document.getElementById('city');
 // var fiveDayInfo = getElementById('fiveDayInfo');
+var listCities = document.getElementById('listCities');
 
 
 
@@ -20,7 +21,7 @@ function renderCity () {
     // var li = document.createElement('li');
     var buttonEl = document.createElement("button");
     buttonEl.textContent = city;
-    ul.appendChild(buttonEl);
+    listCities.appendChild(buttonEl);
       buttonEl.addEventListener("click", searchCityGeo)
 };
 
@@ -41,7 +42,7 @@ function saveCities() {
 // WHEN I search for a city -->
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
 function currentWeatherApi (lat,lon){
-  cityInfo.innerHTML = "";
+  // cityInfo.innerHTML = "";
     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid=7f598c561224054683226ca8211216e9&units=imperial";
     fetch(requestUrl) 
       .then(function(response){
@@ -56,7 +57,7 @@ function currentWeatherApi (lat,lon){
         var humidity = data.main.humidity;
         var wind = data.wind.speed;
         var listItem = document.createElement("li");
-        listItem.textContent = "Temperature: "+ temerature + " Description: "+ description + " Humidity: "+ humidity + " Wind Speed: "+ wind + "m/s";
+        listItem.innerHTML = "Temperature: "+ temerature + "<br> Description: "+ description + "<br> Humidity: "+ humidity + "<br> Wind Speed: "+ wind + "m/s";
         cityInfo.appendChild(listItem);
       });
     };
@@ -85,7 +86,6 @@ function searchCityGeo (city){
             currentWeatherApi(lat,lon);
         }); 
 };
-
 
 searchButton.addEventListener("click",searchCityGeo);
 input.addEventListener("input", saveCities);
