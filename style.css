@@ -62,11 +62,15 @@ li {
 
 .fiveDayForecast {
     display: flex;
+}
+
+.dayOne {
+    display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     height: 250px;
     border: 2px solid black;
-    width: 250px;
+    width: 225px;
     margin-top: 15px;
     font-size: 20px;
     margin-left: 15px;
@@ -79,7 +83,7 @@ li {
     justify-content: flex-start;
     height: 250px;
     border: 2px solid black;
-    width: 250px;
+    width: 225px;
     margin-top: 15px;
     font-size: 20px;
     margin-left: 15px;
@@ -91,7 +95,7 @@ li {
     justify-content: flex-start;
     height: 250px;
     border: 2px solid black;
-    width: 250px;
+    width: 225px;
     margin-top: 15px;
     font-size: 20px;
     margin-left: 15px;
@@ -103,7 +107,7 @@ li {
     justify-content: flex-start;
     height: 250px;
     border: 2px solid black;
-    width: 250px;
+    width: 225px;
     margin-top: 15px;
     font-size: 20px;
     margin-left: 15px;
@@ -115,14 +119,8 @@ li {
     justify-content: flex-start;
     height: 250px;
     border: 2px solid black;
-    width: 250px;
+    width: 225px;
     margin-top: 15px;
     font-size: 20px;
     margin-left: 15px;
-}
-
-#div {
-    display: flexbox;
-    flex-direction: row;
-    flex-wrap: wrap;
 }

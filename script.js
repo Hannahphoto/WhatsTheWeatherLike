@@ -1,14 +1,19 @@
 var cityInfo = document.getElementById('cityInfo');
-// var cityName = document.getElementById('cityName')
 var searchButton = document.getElementById('searchButton');
 var input = document.getElementById('input');
-// var city = document.getElementById('city');
 var fiveDayInfo = document.getElementById('fiveDayInfo');
 var listCities = document.getElementById('listCities');
+// var dayOne =document.getElementById('dayOne');
+var dayTwoInfo = document.getElementById('dayTwoInfo');
+var dayThreeInfo = document.getElementById('dayThreeInfo');
+var dayFourInfo = document.getElementById('dayFourInfo');
+var dayFiveInfo = document.getElementById('dayFiveInfo');
 
+// var cityInput = localStorage.setItem(input, []);
 
-const cityValues =[];
-
+// the events capture user inputs, you can then build the array of things in local storage
+var cityValues =localStorage.getItem(input) || [];
+console.log(cityValues);
 // JSON.parse(localStorage.getItem("input", input));
 
 
@@ -63,6 +68,12 @@ function currentWeatherApi (lat,lon){
 // THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
 
 function fiveDayForecast (lat,lon){
+  fiveDayInfo.innerHTML="";
+  dayTwoInfo.innerHTML="";
+  dayThreeInfo.innerHTML="";
+  dayFourInfo.innerHTML="";
+  dayFiveInfo.innerHTML="";
+
   var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat="+lat+"&lon="+lon+"&appid=7f598c561224054683226ca8211216e9&units=imperial";
   fetch(requestUrl)
     .then(function(response){
@@ -71,57 +82,64 @@ function fiveDayForecast (lat,lon){
     .then(function(data){
       console.log(data);
       var name = data.city.name;
-      var date = data.list[1].dt_txt;
-      var temperature = data.list[1].main.temp;
-      var description = data.list[1].weather[0].description;
-      var humidity = data.list[1].main.humidity;
-      var wind = data.list[1].wind.speed;
-      var date = data.list[2].dt_txt;
-      var temperature = data.list[2].main.temp;
-      var description = data.list[2].weather[0].description;
-      var humidity = data.list[2].main.humidity;
-      var wind = data.list[2].wind.speed;
-      var date = data.list[3].dt_txt;
-      var temperature = data.list[3].main.temp;
-      var description = data.list[3].weather[0].description;
-      var humidity = data.list[3].main.humidity;
-      var wind = data.list[3].wind.speed;
-      var date = data.list[4].dt_txt;
-      var temperature = data.list[4].main.temp;
-      var description = data.list[4].weather[0].description;
-      var humidity = data.list[4].main.humidity;
-      var wind = data.list[4].wind.speed;
-      var date = data.list[5].dt_txt;
-      var temperature = data.list[5].main.temp;
-      var description = data.list[5].weather[0].description;
-      var humidity = data.list[5].main.humidity;
-      var wind = data.list[5].wind.speed;
+      var dateA = data.list[1].dt_txt;
+      var temperatureA = data.list[1].main.temp;
+      var descriptionA = data.list[1].weather[0].description;
+      var humidityA = data.list[1].main.humidity;
+      var windA = data.list[1].wind.speed;
+      var dateB = data.list[7].dt_txt;
+      var temperatureB = data.list[7].main.temp;
+      var descriptionB = data.list[7].weather[0].description;
+      var humidityB = data.list[7].main.humidity;
+      var windB = data.list[7].wind.speed;
+      var dateC = data.list[15].dt_txt;
+      var temperatureC = data.list[15].main.temp;
+      var descriptionC = data.list[15].weather[0].description;
+      var humidityC = data.list[15].main.humidity;
+      var windC = data.list[15].wind.speed;
+      var dateD = data.list[23].dt_txt;
+      var temperatureD = data.list[23].main.temp;
+      var descriptionD = data.list[23].weather[0].description;
+      var humidityD = data.list[23].main.humidity;
+      var windD = data.list[23].wind.speed;
+      var dateE = data.list[31].dt_txt;
+      var temperatureE = data.list[31].main.temp;
+      var descriptionE = data.list[31].weather[0].description;
+      var humidityE = data.list[31].main.humidity;
+      var windE = data.list[31].wind.speed;
+      // var dateF = data.list[39].dt_txt;
+      // var temperatureF = data.list[39].main.temp;
+      // var descriptionF = data.list[39].weather[0].description;
+      // var humidityF = data.list[39].main.humidity;
+      // var windF = data.list[39].wind.speed;
       var listTomorrow = document.createElement("li");
       var listDayTwo = document.createElement("li");
       var listDayThree = document.createElement("li");
       var listDayFour = document.createElement("li");
       var listDayFive = document.createElement("li");
-      listTomorrow.innerHTML = name +"<br> "+date + "<br>Temperature: "+temperature+"<br> Description: "+description+"<br> Humidity: "+humidity+"<br> Wind: "+wind+"m/s";
-      listDayTwo.innerHTML = date + "<br>Temperature: "+temperature+"<br> Description: "+description+"<br> Humidity: "+humidity+"<br> Wind: "+wind+"m/s";
-      listDayThree.innerHTML = date + "<br>Temperature: "+temperature+"<br> Description: "+description+"<br> Humidity: "+humidity+"<br> Wind: "+wind+"m/s";
-      listDayFour.innerHTML = date + "<br>Temperature: "+temperature+"<br> Description: "+description+"<br> Humidity: "+humidity+"<br> Wind: "+wind+"m/s";
-      listDayFive.innerHTML = date + "<br>Temperature: "+temperature+"<br> Description: "+description+"<br> Humidity: "+humidity+"<br> Wind: "+wind+"m/s";
+      // var listDaySix = document.createElement('li');
+      listTomorrow.innerHTML = dateA + "<br>Temperature: "+temperatureA+"<br> Description: "+descriptionA+"<br> Humidity: "+humidityA+"<br> Wind: "+windA+"m/s";
+      listDayTwo.innerHTML = dateB + "<br>Temperature: "+temperatureB+"<br> Description: "+descriptionB+"<br> Humidity: "+humidityB+"<br> Wind: "+windB+"m/s";
+      listDayThree.innerHTML = dateC + "<br>Temperature: "+temperatureC+"<br> Description: "+descriptionC+"<br> Humidity: "+humidityC+"<br> Wind: "+windC+"m/s";
+      listDayFour.innerHTML = dateD + "<br>Temperature: "+temperatureD+"<br> Description: "+descriptionD+"<br> Humidity: "+humidityD+"<br> Wind: "+windD+"m/s";
+      listDayFive.innerHTML = dateE + "<br>Temperature: "+temperatureE+"<br> Description: "+descriptionE+"<br> Humidity: "+humidityE+"<br> Wind: "+windE+"m/s";
+      // listDaySix,innerHTML = date + "<br>Temperature: "+temperature+"<br> Description: "+description+"<br> Humidity: "+humidity+"<br> Wind: "+wind+"m/s";
       fiveDayInfo.appendChild(listTomorrow);
-      fiveDayInfo.appendChild(listDayTwo);
-      fiveDayInfo.appendChild(listDayThree);
-      fiveDayInfo.appendChild(listDayFour);
-      fiveDayInfo.appendChild(listDayFive);
+      dayTwoInfo.appendChild(listDayTwo);
+      dayThreeInfo.appendChild(listDayThree);
+      dayFourInfo.appendChild(listDayFour);
+      dayFiveInfo.appendChild(listDayFive);
+      // dayFive.appendChild(listDaySix);
         })
 }
 
-// the events capture user inputs, you can then build the array of things in local storage, 
+
 
 function saveCities() {
   let city=input.value;
-  console.log(city);
-  JSON.stringify(localStorage.setItem("input",city));
-  cityValues.push(input);
-  searchCityGeo(city);
+  console.log(city); 
+  cityValues.push(city);
+  localStorage.setItem("input",cityValues);
   renderCity();
   // cityInfo.innerHTML= "";
 };
@@ -131,16 +149,14 @@ function saveCities() {
 // THEN I am again presented with current and future conditions for that city
 function renderCity () {
   var city =localStorage.getItem("input", input);
-  // var li = document.createElement('li');
   var buttonEl = document.createElement("button");
   buttonEl.textContent = city;
   listCities.appendChild(buttonEl);
-    buttonEl.addEventListener("click", searchCityGeo)
+    buttonEl.addEventListener("click",searchCityGeo(city));
+    
+  
 };
 
+searchButton.addEventListener("click",saveCities);
+input.addEventListener("input", searchCityGeo);
 
-
-searchButton.addEventListener("click",searchCityGeo);
-input.addEventListener("input", saveCities);
-
-// the parameter to the function will just be based on event handler, for example, nothing will stop you from sending the attribute of a button that has a city name, or the city name from a input field
