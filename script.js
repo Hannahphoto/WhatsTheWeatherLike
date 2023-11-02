@@ -140,14 +140,26 @@ function saveCities() {
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
 function renderCity () {
-  var city =localStorage.getItem("input", input);
+  var city =localStorage.getItem("input");
+  var existingButton = null;
+  
+  listCities.childNodes.forEach(function(node){
+    if(node.textContent === city){
+      existingButton = node;
+    }
+  });
+
+  if(existingButton){
+    listCities.removeChild(existingButton);
+  }
+
   var buttonEl = document.createElement("button");
-  var cityExists = false;
   buttonEl.textContent = city;
   listCities.appendChild(buttonEl);
-    buttonEl.addEventListener("click",searchCityGeo(city));
+  buttonEl.addEventListener("click",searchCityGeo(city));
    //for each to prevent duplicates, then new funciotn to call geo city- instead of local storage, reference the button itself 
-  listCities.forEach(buttonEl)
+  
+  // if(buttonEl.textContent === city)
 };
 
 searchButton.addEventListener("click",saveCities);
