@@ -107,29 +107,21 @@ function fiveDayForecast (lat,lon){
       var descriptionE = data.list[31].weather[0].description;
       var humidityE = data.list[31].main.humidity;
       var windE = data.list[31].wind.speed;
-      // var dateF = data.list[39].dt_txt;
-      // var temperatureF = data.list[39].main.temp;
-      // var descriptionF = data.list[39].weather[0].description;
-      // var humidityF = data.list[39].main.humidity;
-      // var windF = data.list[39].wind.speed;
       var listTomorrow = document.createElement("li");
       var listDayTwo = document.createElement("li");
       var listDayThree = document.createElement("li");
       var listDayFour = document.createElement("li");
       var listDayFive = document.createElement("li");
-      // var listDaySix = document.createElement('li');
       listTomorrow.innerHTML = dateA + "<br>Temperature: "+temperatureA+"<br> Description: "+descriptionA+"<br> Humidity: "+humidityA+"<br> Wind: "+windA+"m/s";
       listDayTwo.innerHTML = dateB + "<br>Temperature: "+temperatureB+"<br> Description: "+descriptionB+"<br> Humidity: "+humidityB+"<br> Wind: "+windB+"m/s";
       listDayThree.innerHTML = dateC + "<br>Temperature: "+temperatureC+"<br> Description: "+descriptionC+"<br> Humidity: "+humidityC+"<br> Wind: "+windC+"m/s";
       listDayFour.innerHTML = dateD + "<br>Temperature: "+temperatureD+"<br> Description: "+descriptionD+"<br> Humidity: "+humidityD+"<br> Wind: "+windD+"m/s";
       listDayFive.innerHTML = dateE + "<br>Temperature: "+temperatureE+"<br> Description: "+descriptionE+"<br> Humidity: "+humidityE+"<br> Wind: "+windE+"m/s";
-      // listDaySix,innerHTML = date + "<br>Temperature: "+temperature+"<br> Description: "+description+"<br> Humidity: "+humidity+"<br> Wind: "+wind+"m/s";
       fiveDayInfo.appendChild(listTomorrow);
       dayTwoInfo.appendChild(listDayTwo);
       dayThreeInfo.appendChild(listDayThree);
       dayFourInfo.appendChild(listDayFour);
       dayFiveInfo.appendChild(listDayFive);
-      // dayFive.appendChild(listDaySix);
         })
 }
 
@@ -150,11 +142,12 @@ function saveCities() {
 function renderCity () {
   var city =localStorage.getItem("input", input);
   var buttonEl = document.createElement("button");
+  var cityExists = false;
   buttonEl.textContent = city;
   listCities.appendChild(buttonEl);
     buttonEl.addEventListener("click",searchCityGeo(city));
-    
-  
+   //for each to prevent duplicates, then new funciotn to call geo city- instead of local storage, reference the button itself 
+  listCities.forEach(buttonEl)
 };
 
 searchButton.addEventListener("click",saveCities);
