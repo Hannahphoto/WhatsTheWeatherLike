@@ -82,30 +82,30 @@ function fiveDayForecast (lat,lon){
     .then(function(data){
       console.log(data);
       var name = data.city.name;
-      var dateA = data.list[1].dt_txt;
-      var temperatureA = data.list[1].main.temp;
-      var descriptionA = data.list[1].weather[0].description;
-      var humidityA = data.list[1].main.humidity;
-      var windA = data.list[1].wind.speed;
-      var dateB = data.list[7].dt_txt;
-      var temperatureB = data.list[7].main.temp;
-      var descriptionB = data.list[7].weather[0].description;
-      var humidityB = data.list[7].main.humidity;
-      var windB = data.list[7].wind.speed;
-      var dateC = data.list[15].dt_txt;
-      var temperatureC = data.list[15].main.temp;
-      var descriptionC = data.list[15].weather[0].description;
-      var humidityC = data.list[15].main.humidity;
-      var windC = data.list[15].wind.speed;
-      var dateD = data.list[23].dt_txt;
-      var temperatureD = data.list[23].main.temp;
-      var descriptionD = data.list[23].weather[0].description;
-      var humidityD = data.list[23].main.humidity;
-      var windD = data.list[23].wind.speed;
-      var dateE = data.list[31].dt_txt;
-      var temperatureE = data.list[31].main.temp;
-      var descriptionE = data.list[31].weather[0].description;
-      var humidityE = data.list[31].main.humidity;
+      var dateA = data.list[6].dt_txt;
+      var temperatureA = data.list[6].main.temp;
+      var descriptionA = data.list[6].weather[0].description;
+      var humidityA = data.list[6].main.humidity;
+      var windA = data.list[6].wind.speed;
+      var dateB = data.list[14].dt_txt;
+      var temperatureB = data.list[14].main.temp;
+      var descriptionB = data.list[14].weather[0].description;
+      var humidityB = data.list[14].main.humidity;
+      var windB = data.list[14].wind.speed;
+      var dateC = data.list[22].dt_txt;
+      var temperatureC = data.list[22].main.temp;
+      var descriptionC = data.list[22].weather[0].description;
+      var humidityC = data.list[22].main.humidity;
+      var windC = data.list[22].wind.speed;
+      var dateD = data.list[30].dt_txt;
+      var temperatureD = data.list[30].main.temp;
+      var descriptionD = data.list[30].weather[0].description;
+      var humidityD = data.list[30].main.humidity;
+      var windD = data.list[30].wind.speed;
+      var dateE = data.list[38].dt_txt;
+      var temperatureE = data.list[38].main.temp;
+      var descriptionE = data.list[38].weather[0].description;
+      var humidityE = data.list[38].main.humidity;
       var windE = data.list[31].wind.speed;
       var listTomorrow = document.createElement("li");
       var listDayTwo = document.createElement("li");
@@ -123,15 +123,17 @@ function fiveDayForecast (lat,lon){
       dayFourInfo.appendChild(listDayFour);
       dayFiveInfo.appendChild(listDayFive);
         })
-}
+};
 
 
 
 function saveCities() {
+  
   let city=input.value;
   console.log(city); 
   cityValues.push(city);
-  localStorage.setItem("input",cityValues);
+  localStorage.setItem("input",city);
+  searchCityGeo(city);
   renderCity();
   // cityInfo.innerHTML= "";
 };
@@ -139,7 +141,8 @@ function saveCities() {
 // then re-render the list
 // WHEN I click on a city in the search history
 // THEN I am again presented with current and future conditions for that city
-function renderCity () {
+function renderCity (city) {
+  event.preventDefault();
   var city =localStorage.getItem("input");
   var existingButton = null;
   
@@ -153,15 +156,20 @@ function renderCity () {
     listCities.removeChild(existingButton);
   }
 
-  var buttonEl = document.createElement("button");
-  buttonEl.textContent = city;
-  listCities.appendChild(buttonEl);
-  buttonEl.addEventListener("click",searchCityGeo(city));
+  var cityButtonEl = document.createElement("button");
+  cityButtonEl.textContent = city;
+  cityButtonEl.setAttribute("data-city", city);
+  listCities.appendChild(cityButtonEl);
+  $(cityButtonEl).on("click", function(){
+    var cityName = $(this).data("city");
+    searchCityGeo(cityName);
+  })
    //for each to prevent duplicates, then new funciotn to call geo city- instead of local storage, reference the button itself 
   
   // if(buttonEl.textContent === city)
 };
 
+
 searchButton.addEventListener("click",saveCities);
-input.addEventListener("input", searchCityGeo);
+input.addEventListener("input", searchCityGeo(city));
 
