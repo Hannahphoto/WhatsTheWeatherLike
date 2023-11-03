@@ -29,7 +29,8 @@ Everything else i had trouble with i fixed myself.
 Good assignment, i liked it. 
 
 ##Links
-
+Git Hub - https://github.com/Hannahphoto/WhatsTheWeatherLike
+Deployed - https://hannahphoto.github.io/WhatsTheWeatherLike/
 
 
 <div align="center">
