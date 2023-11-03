@@ -24,7 +24,7 @@ console.log(cityValues);
 function searchCityGeo (city){
   event.preventDefault();
   cityInfo.innerHTML="";
-  var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid=7f598c561224054683226ca8211216e9";
+  var requestUrl = "https://api.openweathermap.org/geo/1.0/direct?q="+city+"&limit=1&appid=7f598c561224054683226ca8211216e9";
   fetch(requestUrl)
       .then(function(response){
           return response.json();
