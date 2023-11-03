@@ -18,6 +18,7 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
+## Notes
 trouble with "for each" = https://www.youtube.com/watch?v=6Hb0qZ3PVWI
 https://stackoverflow.com/questions/10757516/how-to-prevent-adding-duplicate-keys-to-a-javascript-array
 
@@ -27,4 +28,11 @@ Received help from Anthony via Slack about the APIs.
 Everything else i had trouble with i fixed myself. 
 Good assignment, i liked it. 
 
+##Links
+
+
+
+<div align="center">
+    <img src="./assets/image/WeatherDashboard.png" href = "screenshot Weather Dashboard." />
+    </div>
 
