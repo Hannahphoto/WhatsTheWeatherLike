@@ -18,5 +18,13 @@ THEN I am presented with a 5-day forecast that displays the date, an icon repres
 WHEN I click on a city in the search history
 THEN I am again presented with current and future conditions for that city
 
-trouble with for each = https://www.youtube.com/watch?v=6Hb0qZ3PVWI
+trouble with "for each" = https://www.youtube.com/watch?v=6Hb0qZ3PVWI
 https://stackoverflow.com/questions/10757516/how-to-prevent-adding-duplicate-keys-to-a-javascript-array
+
+Had trouble with my local storage adding to one button. Received help through ask BCS, one fix, i was putting my entire array in the buttons.
+I also received helped with the boxes. Seemed to have forgot a little of css and finally used flexbox correctly. This assignment forces you to do that. 
+Received help from Anthony via Slack about the APIs. 
+Everything else i had trouble with i fixed myself. 
+Good assignment, i liked it. 
+
+
