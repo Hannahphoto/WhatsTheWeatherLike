@@ -221,7 +221,7 @@ li {
 @media screen and (max-width:519px){
     .currentDate {
         margin: 15px;
-        height: 250px;
+        height: 300px;
         border: 2px solid black;
         width: 250px;
         font-size: 25px;
